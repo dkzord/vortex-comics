@@ -1,18 +1,22 @@
-import React, { useContext } from 'react'
-import { SDivider, SLink, SLinkContainer, SLinkIcon, SLinkLabel, SLogo, SSidebar, STheme, SThemeLabel, SThemeToggle, SToggleThumb } from './styles';
+import React, { useContext, useState } from 'react'
+import { SDivider, SLink, SLinkContainer, SLinkIcon, SLinkLabel, SLogo, SSidebar, SSidebarButton, STheme, SThemeLabel, SThemeToggle, SToggleThumb } from './styles';
 import {  GiNinjaHead, GiSecretBook, GiThorHammer } from "react-icons/gi";
+import { AiOutlineLeft } from "react-icons/ai";
 import { ThemeContext } from "../../App";
 
 import { logoSVG } from '../../assets'
+import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const { setTheme, theme } = useContext(ThemeContext);
+  const [ sidebarOpen, setSidebarOpen ] = useState(false);
+  const { pathname } = useLocation();
 
   return (
-    <SSidebar>
+    <SSidebar isOpen={sidebarOpen}>
       <>
-        <SSidebarButton>
-          
+        <SSidebarButton isOpen={sidebarOpen} onClick={() => setSidebarOpen(p => !p)}>
+          <AiOutlineLeft />
         </SSidebarButton>
       </>
       <SLogo>
@@ -20,16 +24,21 @@ const Sidebar = () => {
       </SLogo>
       <SDivider />
       {linksArray.map(({icon, label, to}) =>(
-        <SLinkContainer key={label}>
-          <SLink to={to}>
+        <SLinkContainer key={label} isActive={ pathname === to }>
+          <SLink to={to} style={!sidebarOpen ? {width: `fit-content`} : {}}>
             <SLinkIcon>{icon}</SLinkIcon>
-            <SLinkLabel>{label}</SLinkLabel>
+            {sidebarOpen && (
+              <>
+                <SLinkLabel>{label}</SLinkLabel>
+              </>
+            )}
           </SLink>
         </SLinkContainer>
       ))}
       <SDivider />
       <STheme>
-        <SThemeLabel>Dark Mode</SThemeLabel>
+        {sidebarOpen && (<SThemeLabel>Dark Mode</SThemeLabel>)}
+
         <SThemeToggle isActive={ theme === 'dark'} onClick={() => setTheme((p) => (p === 'light' ? 'dark' : 'light'))}>
           <SToggleThumb style={theme === 'dark' ? {right: "1px"} : {}}/>
         </SThemeToggle>

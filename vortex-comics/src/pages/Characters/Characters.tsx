@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import api from '../../services/api';
-import { BottomCard, BottomText, Card, CardList, Container, MediaCard, Title, TopCard } from './styles';
+import { BottomCard, BottomText, ButtonMore, Card, CardList, Container, MediaCard, Title, TopCard } from './styles';
 
 interface ResponseData {
   id: number;
@@ -23,20 +23,23 @@ const Characters: React.FC = () => {
       .catch((error: any) => console.error(error))
   }, [])
 
+  const handleMore = useCallback(async () => {
+    try{
+      const offset = characters.length;
+      const response = await api.get(`/characters`, { 
+        params: { 
+          offset,
+        },
+      });
+
+      setCharacters([... characters, ...response.data.data.results]);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [characters]);
+
   return (
     <Container>
-      {/* <ul>
-        {characters.map(characters => {
-          return (
-            <li key={characters.id}>
-               <img src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`} alt={`Foto do ${characters.name}`}/>
-              <span className="name">{characters.name}</span>
-              <span className="description">{characters.description}</span> 
-            </li>
-          )
-        })}
-      </ul> */}
-
       <CardList>
         {characters.map(characters => {
           return (
@@ -54,8 +57,10 @@ const Characters: React.FC = () => {
             </Card>
           )
         })}
-
       </CardList>
+      <ButtonMore onClick={handleMore}>
+        Mais
+      </ButtonMore>
     </Container>
   )
 }

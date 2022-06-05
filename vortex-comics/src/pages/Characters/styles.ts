@@ -13,7 +13,7 @@ export const Container = styled.main`
   width: 100%;
   height: 100%;
 
-  margin-left: 50px;
+  margin-left: 20px;
 
   // Avaliar
   /* display: flex;
@@ -28,7 +28,11 @@ export const Container = styled.main`
   }
 `;
 
-export const CardList = styled.div``;
+export const CardList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 const urlImg = (props: ThumbnailData) =>
   `${props.thumbnail.path}.${props.thumbnail.extension}`;
@@ -68,6 +72,8 @@ export const MediaCard = styled.div`
     width: 100%;
     border-radius: 2px;
     background-size: cover;
+
+    transition: all 1s;
   }
 `;
 
@@ -79,4 +85,29 @@ export const BottomText = styled.span`
   color: var(--color-description-card);
   text-align: justify;
   margin-bottom: 10px;
+`;
+
+export const ButtonMore = styled.button`
+  background: #f1f1f1;
+  height: 40px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  padding: 0 50px;
+  border-radius: 5px;
+  transition: all 0.3s;
+
+  & {
+    background: #31d2f2;
+  }
+
+  &:hover {
+    background: #0b5ed7;
+  }
 `;

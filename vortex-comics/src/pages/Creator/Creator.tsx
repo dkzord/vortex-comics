@@ -16,7 +16,9 @@ const Creator: React.FC  = () => {
 
   useEffect(() => {
     api.get('/creators')
-      .then((resp: any) => console.log(resp.data.data.results))
+      .then((resp: any) => {
+        setCreators(resp.data.data.results)
+      })
       .catch((error: any) => console.error(error))
   }, [])
 

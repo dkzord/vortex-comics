@@ -15,14 +15,6 @@ export const Container = styled.main`
 
   margin-left: 20px;
 
-  // Avaliar
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  height: 100vh; */
-
   li {
     list-style: none;
   }

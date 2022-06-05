@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { Container } from './styles';
 
 interface ResponseData {
   id: number;
@@ -22,10 +23,20 @@ const Characters: React.FC = () => {
       .catch((error: any) => console.error(error))
   }, [])
 
-  console.log('OUTRO', characters);
-
   return (
-    <div>Characters</div>
+    <Container>
+      <h1>Teste do Characters</h1>
+      <ul>
+        {characters.map(characters => {
+          return (
+            <li key={characters.id}>
+              <img src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`} alt={`Foto do ${characters.name}`}/>
+              <span className="name">{characters.name}</span>
+            </li>
+          )
+        })}
+      </ul>
+    </Container>
   )
 }
 

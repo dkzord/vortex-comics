@@ -18,4 +18,6 @@ export const btnReset = css`
   letter-spacing: inherit;
   color: inherit;
   font-size: inherit;
+  text-decoration: none;
+  padding: 0;
 `;

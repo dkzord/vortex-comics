@@ -1,7 +1,8 @@
-import React from "react";
+import * as React from 'react';
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { ThemeProvider } from "styled-components";
+import Layout from './components/Layout/layout';
 import { GlobalStyle } from "./styles/global";
 import { darkTheme, lightTheme } from "./styles/theme";
 
@@ -21,6 +22,11 @@ function App() {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
         </Helmet>
+        <>
+          <Layout>
+            test
+          </Layout>
+        </>
       </ThemeProvider>
     </ThemeContext.Provider>
   )

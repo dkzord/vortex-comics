@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import api from '../../services/api';
+import { ButtonMore, Card, CardList, Container, MediaCard, Title, TopCard } from './styles';
 
 interface ResponseData {
   id: number;
-  title: string;
-  description: string;
+  fullName: string;
   thumbnail: {
     extension: string;
     path: string;
@@ -12,14 +12,54 @@ interface ResponseData {
 }
 
 const Creator: React.FC  = () => {
+  const [creators, setCreators] = useState<ResponseData[]>([]);
+
   useEffect(() => {
     api.get('/creators')
       .then((resp: any) => console.log(resp.data.data.results))
       .catch((error: any) => console.error(error))
   }, [])
 
+  const handleMore = useCallback(async () => {
+    try{
+      const offset = creators.length;
+      const response = await api.get(`/creators`, { 
+        params: { 
+          offset,
+        },
+      });
+
+      setCreators([... creators, ...response.data.data.results]);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [creators]);
+
+
   return (
-    <div>Creator</div>
+    <Container>
+      <CardList>
+        {creators.map(creators => {
+          return (
+            <Card key={creators.id}>
+              <TopCard>
+                <Title>{creators.fullName}</Title>
+              </TopCard>
+              <MediaCard thumbnail={creators.thumbnail}>
+                {/* <div id="img"/> */}
+                <img id="img" src={`${creators.thumbnail.path}.${creators.thumbnail.extension}`} alt={`Foto do ${creators.fullName}`}/>
+              </MediaCard>
+              {/* <BottomCard>
+                <BottomText>{creators.description}</BottomText>
+              </BottomCard> */}
+            </Card>
+          )
+        })}
+      </CardList>
+      <ButtonMore onClick={handleMore}>
+        Mais
+      </ButtonMore>
+    </Container>
   )
 }
 

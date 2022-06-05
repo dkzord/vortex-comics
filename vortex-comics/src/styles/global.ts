@@ -16,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html{
+    overflow-x:hidden;
+  }
+
 
   //Tamanho de font 16px (para desktop) por padrão
   html{

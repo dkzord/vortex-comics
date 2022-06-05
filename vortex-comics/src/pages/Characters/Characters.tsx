@@ -14,7 +14,7 @@ interface ResponseData {
 
 const Characters: React.FC = () => {
   const [characters, setCharacters] = useState<ResponseData[]>([]);
-
+  
   useEffect(() => {
     api.get('/characters')
       .then((resp) => {

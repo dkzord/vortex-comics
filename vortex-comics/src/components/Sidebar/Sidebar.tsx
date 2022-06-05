@@ -11,15 +11,15 @@ const Sidebar = () => {
         <img src={logoSVG} alt="logo"/>
       </SLogo>
       <SDivider />
-      {linksArray.map(({icon, label, notification, to}) =>(
+      {linksArray.map(({icon, label, to}) =>(
         <SLinkContainer key={label}>
           <SLink to={to}>
             <SLinkIcon>{icon}</SLinkIcon>
             <SLinkLabel>{label}</SLinkLabel>
-            <SLinkNotification>{notification}</SLinkNotification>
           </SLink>
         </SLinkContainer>
       ))}
+      <SDivider />
     </SSidebar>
   )
 }
@@ -29,19 +29,16 @@ const linksArray = [
     label: 'HQs / Comics',
     icon: <GiSecretBook />,
     to: '/',
-    notification: 1,
   },
   {
     label: 'Personagens',
     icon: <GiNinjaHead />,
     to: '/characters',
-    notification: 2,
   },
   {
     label: 'Criadores',
     icon: <GiThorHammer />,
     to: '/creator',
-    notification: 3,
   },
 ]
 

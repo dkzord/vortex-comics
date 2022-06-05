@@ -12,14 +12,15 @@ export const SSidebar = styled.div`
 `;
 
 export const SLogo = styled.div`
-  width: 50px;
-  cursor: pointer;
-  margin-bottom: ${v.lgSpacing};
+  width: 52px;
 
   img {
     max-width: 100%;
     height: auto;
   }
+
+  cursor: pointer;
+  margin-bottom: ${v.lgSpacing};
 `;
 
 export const SDivider = styled.div`
@@ -59,16 +60,15 @@ export const SLinkIcon = styled.div`
 
 export const SLinkLabel = styled.span`
   display: block;
-  flex: 1px;
+  flex: 1;
   margin-left: ${v.smSpacing};
 `;
 
 export const SLinkNotification = styled.div`
   font-size: 14px;
-  padding: calc(${v.mdSpacing} / 2) ${v.smSpacing};
+  padding: calc(${v.smSpacing} / 2) ${v.smSpacing};
   border-radius: calc(${v.borderRadius} / 2);
   background: ${({ theme }) => theme.primary};
   color: white;
-
   margin-right: ${v.mdSpacing};
 `;

@@ -51,9 +51,6 @@ const Creator: React.FC  = () => {
                 {/* <div id="img"/> */}
                 <img id="img" src={`${creators.thumbnail.path}.${creators.thumbnail.extension}`} alt={`Foto do ${creators.fullName}`}/>
               </MediaCard>
-              {/* <BottomCard>
-                <BottomText>{creators.description}</BottomText>
-              </BottomCard> */}
             </Card>
           )
         })}

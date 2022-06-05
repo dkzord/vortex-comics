@@ -37,13 +37,6 @@ export const Card = styled.div`
   height: 450px;
   margin: 10px;
   overflow: hidden;
-
-  // Recua a imagem para o texto
-  &:hover {
-    #img {
-      height: 100px;
-    }
-  }
 `;
 
 export const TopCard = styled.div`
@@ -64,8 +57,6 @@ export const MediaCard = styled.div`
     width: 100%;
     border-radius: 2px;
     background-size: cover;
-
-    transition: all 1s;
   }
 `;
 

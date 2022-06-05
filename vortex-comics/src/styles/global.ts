@@ -38,8 +38,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.bg2};
-    color: ${(theme) => theme.text};
+    color: ${({ theme }) => theme.text};
     letter-spacing: 0.6px;
+    font-family: "Poppins", sans-serif;
 
     -webkit-font-smoothing: antialiased;
   }

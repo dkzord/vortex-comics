@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { ThemeProvider } from "styled-components";
 import Layout from './components/Layout/layout';
+import Routes from './Routes';
 import { GlobalStyle } from "./styles/global";
 import { darkTheme, lightTheme } from "./styles/theme";
 
@@ -24,7 +25,7 @@ function App() {
         </Helmet>
         <>
           <Layout>
-            test
+            <Routes />
           </Layout>
         </>
       </ThemeProvider>

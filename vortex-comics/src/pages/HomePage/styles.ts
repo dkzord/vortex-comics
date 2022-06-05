@@ -37,13 +37,6 @@ export const Card = styled.div`
   height: 450px;
   margin: 10px;
   overflow: hidden;
-
-  // Recua a imagem para o texto
-  &:hover {
-    #img {
-      height: 100px;
-    }
-  }
 `;
 
 export const TopCard = styled.div`
@@ -101,5 +94,37 @@ export const ButtonMore = styled.button`
 
   &:hover {
     background: #0b5ed7;
+  }
+`;
+
+export const ButtonModal = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+`;
+
+export const ContainerModal = styled.div`
+  width: 100%;
+  max-width: 700px;
+
+  h2 {
+    color: var(--color-title-card);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+export const MediaCardModal = styled.div`
+  img {
+    background: url(${urlImg}) no-reapt center;
+    height: 450px;
+    width: 300px;
+    border-radius: 2px;
+    background-size: cover;
+    transition: all 1s;
   }
 `;

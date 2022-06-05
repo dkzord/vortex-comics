@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import api from '../../services/api';
-import { BottomCard, BottomText, ButtonMore, Card, CardList, Container, MediaCard, Title, TopCard } from './styles';
+import { BottomCard, BottomText, ButtonModal, ButtonMore, Card, CardList, Container, ContainerModal, MediaCard, MediaCardModal, Title, TopCard } from './styles';
+import Modal from 'react-modal';
 
 interface ResponseData {
   id: number;
@@ -11,6 +12,8 @@ interface ResponseData {
     path: string;
   };
 }
+
+Modal.setAppElement('#root');
 
 const HomePage: React.FC  = () => {
   const [comics, setComics] = useState<ResponseData[]>([]);
@@ -38,23 +41,51 @@ const HomePage: React.FC  = () => {
     }
   }, [comics]);
 
+  /* MODALLLLLLL */
+  const [isNewTransactionModal, setIsNewTransactionModal] = useState(false);
+
+  function hadleNewTransactionModal(){
+    setIsNewTransactionModal(true);
+  }
+
+  function hadleClearNewTransactionModal(){
+    setIsNewTransactionModal(false);
+  }
+
   return (
     <Container>
       <CardList>
         {comics.map(comics => {
           return (
-            <Card key={comics.id}>
-              <TopCard>
-                <Title>{comics.title}</Title>
-              </TopCard>
-              <MediaCard thumbnail={comics.thumbnail}>
-                {/* <div id="img"/> */}
-                <img id="img" src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`} alt={`Foto do ${comics.title}`}/>
-              </MediaCard>
-              <BottomCard>
-                <BottomText>{comics.description}</BottomText>
-              </BottomCard>
-            </Card>
+            <div>
+            <ButtonModal onClick={hadleNewTransactionModal} >
+              <Card key={comics.id}>
+                <TopCard>
+                  <Title>{comics.title}</Title>
+                </TopCard>
+                <MediaCard thumbnail={comics.thumbnail}>
+                  {/* <div id="img"/> */}
+                  <img id="img" src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`} alt={`Foto do ${comics.title}`} />
+                </MediaCard>
+              </Card>
+            </ButtonModal>
+            <Modal
+              isOpen={isNewTransactionModal}
+              onRequestClose={hadleClearNewTransactionModal}
+              overlayClassName="react-modal-overlay"
+              className="react-modal-content"
+            >
+              <ContainerModal>
+                <h2>{comics.title}</h2>
+                <MediaCardModal thumbnail={comics.thumbnail}>
+                  <img id="img" src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`} alt={`Foto do ${comics.title}`} />
+                </MediaCardModal>
+                <BottomCard>
+                  <BottomText>{comics.description}</BottomText>
+                </BottomCard>
+              </ContainerModal>
+            </Modal>
+            </div>
           )
         })}
       </CardList>

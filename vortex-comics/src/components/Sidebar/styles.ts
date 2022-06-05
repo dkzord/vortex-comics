@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { v } from "../../styles/variables";
+import { btnReset, v } from "../../styles/variables";
 
 export const SSidebar = styled.div`
   width: ${v.sidebarWidth};
@@ -62,4 +62,39 @@ export const SLinkLabel = styled.span`
   display: block;
   flex: 1;
   margin-left: ${v.smSpacing};
+`;
+
+export const STheme = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+`;
+
+export const SThemeLabel = styled.span`
+  display: block;
+  flex: 1;
+`;
+
+export const SThemeToggle = styled.button`
+  ${btnReset};
+  margin: 0 auto;
+  cursor: pointer;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: ${({ theme, isActive }) =>
+    !isActive ? theme.bg3 : theme.primary};
+  position: relative;
+`;
+
+export const SToggleThumb = styled.div`
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  transition: 0.2s ease right;
+  right: calc(100% - 18px - 1px);
+  border-radius: 50%;
+  background: ${({ theme }) => theme.bg};
 `;

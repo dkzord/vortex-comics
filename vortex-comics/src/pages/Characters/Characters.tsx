@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { Container } from './styles';
+import { BottomCard, BottomText, Card, CardList, Container, MediaCard, Title, TopCard } from './styles';
 
 interface ResponseData {
   id: number;
@@ -25,17 +25,37 @@ const Characters: React.FC = () => {
 
   return (
     <Container>
-      <h1>Teste do Characters</h1>
-      <ul>
+      {/* <ul>
         {characters.map(characters => {
           return (
             <li key={characters.id}>
-              <img src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`} alt={`Foto do ${characters.name}`}/>
+               <img src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`} alt={`Foto do ${characters.name}`}/>
               <span className="name">{characters.name}</span>
+              <span className="description">{characters.description}</span> 
             </li>
           )
         })}
-      </ul>
+      </ul> */}
+
+      <CardList>
+        {characters.map(characters => {
+          return (
+            <Card key={characters.id}>
+              <TopCard>
+                <Title>{characters.name}</Title>
+              </TopCard>
+              <MediaCard thumbnail={characters.thumbnail}>
+                {/* <div id="img"/> */}
+                <img id="img" src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`} alt={`Foto do ${characters.name}`}/>
+              </MediaCard>
+              <BottomCard>
+                <BottomText>{characters.description}</BottomText>
+              </BottomCard>
+            </Card>
+          )
+        })}
+
+      </CardList>
     </Container>
   )
 }

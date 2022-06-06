@@ -1,6 +1,6 @@
 # Vortex Comics
 
-# 💰 Desafio da empresa Brisanet
+# 💰 Desafio Com API da Marvel.
 
 
 # Indice

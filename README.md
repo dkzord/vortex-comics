@@ -12,7 +12,7 @@
 
 # 📜 Sobre
 
-Projeto desenvolvido como desafio da empresa Brisanet sobre a vaga de Desenvolvedor Front-End Jr.
+Projeto desenvolvido como desafio a vaga de Desenvolvedor Front-End Jr.
 O mesmo consistia em montar uma aplicação SPA totalmente do zero com layout livre do desenvolvedor
 
 🛑 Aviso: Esse projeto se encontra na V1!!!
